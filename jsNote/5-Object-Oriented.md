@@ -410,7 +410,7 @@ js的对象是无序属性的集合，其属性可以包含基本值、对象或
   >
   > > 构造函数、原型和实例的关系：
   >
-  > > 每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针.
+  > > 每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。让原型对象等于另一个类型的实例，此时原型对象将包含一个指向另一个原型的指针，以此类推就形成了原型链。
 
   ```javascript
   function SuperType() {
@@ -429,8 +429,9 @@ js的对象是无序属性的集合，其属性可以包含基本值、对象或
   	return this.subproperty;
   };
   var instance = new SubType();
-  console.log(instance.getSuperValue());​
+  console.log(instance.getSuperValue());
   ```
+  >  SubType 继承了 SuperType，而继承是通过创建 SuperType 的实例，并将该实例赋给SubType.prototype 实现的。实现的本质是重写原型对象，代之以一个新类型的实例。换句话说，原来存在于 SuperType 的实例中的所有属性和方法，现在也存在于 SubType.prototype 中了。在确立了继承关系之后，我们给 SubType.prototype 添加了一个方法，这样就在继承了 SuperType 的属性和方法的基础上又添加了一个新方法。
 
 * 借用构造函数
 
