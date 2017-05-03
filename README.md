@@ -10,5 +10,9 @@
 
 4.[引用类型](./jsNote/4-referenceType.md)
 
+4.[引用类型2](./jsNote/4-referenceType2.md)
+
 5.[面向对象程序设计](./jsNote/5-Object-Oriented.md)
+
+6.[函数表达式](./jsNote/6-FunctionExpression.md)
 
