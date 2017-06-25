@@ -2,6 +2,8 @@
 
 > command+点击
 
+## ECMAScript
+
 1.[简介](./jsNote/1-introduce.md)
 
 2.[基本概念](./jsNote/2-BasicConcept.md)
@@ -15,4 +17,10 @@
 5.[面向对象程序设计](./jsNote/5-Object-Oriented.md)
 
 6.[函数表达式](./jsNote/6-FunctionExpression.md)
+
+## BOM
+
+1.[BOM](./jsNote/7-BOM.md)
+
+2.[客户端检测](./jsNote/8-clientMonitor.md)
 
