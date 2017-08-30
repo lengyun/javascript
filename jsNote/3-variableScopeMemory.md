@@ -55,7 +55,7 @@
   alert(person instanceof Object)
   ```
 
-  ​
+  所有引用类型的值都是 Object 的实例
 
 ### 执行环境及作用域
 
