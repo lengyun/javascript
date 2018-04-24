@@ -422,44 +422,262 @@ if (element.tagName.toLowerCase() == "div"){ //这样最好（适用于任何文
 2.  nodeName 的值为"#text"；
 3.  nodeValue 的值为节点所包含的文本；
 4.  parentNode 是一个 Element；
+5.  不支持（没有）子节点
 
-​        不支持（没有）子节点
+ nodeValue 属性或 data 属性访问 Text 节点中包含的文本，
 
 > 操作节点中的文本:
 >
 > * appendData(text)：将 text 添加到节点的末尾。
-> *  deleteData(offset, count)：从 offset 指定的位置开始删除 count 个字符。
-> *  insertData(offset, text)：在 offset 指定的位置插入 text。
-> *  replaceData(offset, count, text)：用 text 替换从 offset 指定的位置开始到 offset+count 为止处的文本。
-> *  splitText(offset)：从 offset 指定的位置将当前文本节点分成两个文本节点。
-> *  substringData(offset, count)：提取从 offset 指定的位置开始到 offset+count 为止处的字符串。
+> * deleteData(offset, count)：从 offset 指定的位置开始删除 count 个字符。
+> * insertData(offset, text)：在 offset 指定的位置插入 text。
+> * replaceData(offset, count, text)：用 text 替换从 offset 指定的位置开始到 offset+count 为止处的文本。
+> * splitText(offset)：从 offset 指定的位置将当前文本节点分成两个文本节点。
+> * substringData(offset, count)：提取从 offset 指定的位置开始到 offset+count 为止处的字符串。
 
 * 创建文本节点
 
   *  document.createTextNode()
 
-    > 参数——要插入节点中的文本
-
-     normalize()   
-
-    > 将相邻文本节点合并
-
-    ​
+    > 一个参数——要插入节点中的文本
 
 * 规范化文本节点
 
+   normalize()   
+
+  > 在一个包含两个或多个文本节点的父元素上调用 normalize()方法，则会将所有文本节点合并成一个
+  > 节点
+
 * 分割文本节点
 
+   splitText()
 
-* Comment类型
-* DocumentType类型
-* DocumentFragment类型
-* Attr类型
+  > 这个方法会将一个文本节点分成两个文本节点，即按照指定的位置分割 nodeValue 值。原来的文本节点将包含从开始到指定位置之前的内容，新文本节点将包含剩下的文本。这个方法会返回一个新文本节点，该节点与原节点的parentNode 父标签是同一个。
+
+  > 分割文本节点是从文本节点中提取数据的一种常用 DOM 解析技术。
+
+
+### Comment类型（注释）
+
+1.  nodeType 的值为 8；
+
+2.  nodeName 的值为"#comment"；
+
+3.  nodeValue 的值是注释的内容；
+
+4.  parentNode 可能是 Document 或 Element；
+
+5.  不支持（没有）子节点。
+
+   > Comment 类型与 Text 类型继承自相同的基类，因此它拥有除 splitText()之外的所有字符串操
+   > 作方法。与 Text 类型相似，也可以通过 nodeValue 或 data 属性来取得注释的内容
+
+* document.createComment() 创建注释节点
+
+  >  document.createComment()并为其传递注释文本也可以创建注释节点
+
+  ```js
+  var comment = document.createComment("A comment ");
+  ```
+
+###CDATASection类型
+
+> CDATASection 类型只针对基于 XML 的文档，表示的是 CDATA 区域。与 Comment 类似，
+> CDATASection 类型继承自 Text 类型，因此拥有除 splitText()之外的所有字符串操作方法
+
+ nodeType 的值为 4；
+ nodeName 的值为"#cdata-section"；
+ nodeValue 的值是 CDATA 区域中的内容；
+ parentNode 可能是 Document 或 Element；
+ 不支持（没有）子节点。
+
+```xml
+<div id="myDiv"><![CDATA[This is some content.]]></div>
+```
+
+> 在真正的 XML 文档中，可以使用 document.createCDataSection()来创建 CDATA 区域，只需
+> 为其传入节点的内容即可
+
+###DocumentType类型
+
+> 在 Web 浏览器中并不常用，仅有 Firefox、 Safari 和 Opera 支持它,包含着与文档的 doctype 有关的所有信息
+
+ nodeType 的值为 10；
+ nodeName 的值为 doctype 的名称；
+ nodeValue 的值为 null；
+ parentNode 是 Document；
+ 不支持（没有）子节点。
+
+###DocumentFragment类型
+
+> DocumentFragment 在文档中没有对应的标记。 DOM 规定文档片段（document fragment）是一种“轻量级”的文档，可以包含和控制节点，但不会像完整的文档那样占用额外的资源
+
+ nodeType 的值为 11；
+ nodeName 的值为"#document-fragment"；
+ nodeValue 的值为 null；
+ parentNode 的值为 null；
+ 子节点可以是 Element、 ProcessingInstruction、 Comment、 Text、 CDATASection 或
+EntityReference。
+
+> 可以将它作为一个“仓库”来使用，即可以在里面保存将来可能会添加到文档中的节点
+
+创建文档片段
+
+```js
+var fragment = document.createDocumentFragment();
+```
+
+>  可以通过appendChild()或 insertBefore()将文档片段中内容添加到文档中
+
+###Attr类型
+
+> 元素的特性在 DOM 中以 Attr 类型来表示。在所有浏览器中（包括 IE8），都可以访问 Attr 类型
+> 的构造函数和原型。从技术角度讲，特性就是存在于元素的 attributes 属性中的节点。
+
+```js
+element.attributes['class']
+```
+
+ nodeType 的值为 2；
+ nodeName 的值是特性的名称；
+ nodeValue 的值是特性的值；
+ parentNode 的值为 null；
+ 在 HTML 中不支持（没有）子节点；
+ 在 XML 中子节点可以是 Text 或 EntityReference。
+
+> 尽管它们也是节点，但特性却不被认为是 DOM 文档树的一部分。开发人员最常使用的是 getAttribute()、 setAttribute()和 remveAttribute()方法，在元素上操作特性
+
+> Attr 对象有 3 个属性： name、 value 和 specified。其中， name 是特性名称（与 nodeName 的值相同）， value 是特性的值（与 nodeValue 的值相同），而 specified 是一个布尔值，用以区别特性是在代码中指定的，还是默认的。
+
+> document.createAttribute()并传入特性的名称可以创建新的特性节点
+
+```js
+var attr = document.createAttribute("align");
+attr.value = "left";
+element.setAttributeNode(attr);
+alert(element.attributes["align"].value); //"left"
+alert(element.getAttributeNode("align").value); //"left"
+alert(element.getAttribute("align")); //"left"
+```
+
+> 这个例子创建了一个新的特性节点。由于在调用 createAttribute()时已经为 name 属性赋了值，
+> 所以后面就不必给它赋值了。之后，又把 value 属性的值设置为"left"。为了将新创建的特性添加到元素中，必须使用元素的 setAttributeNode()方法。添加特性之后，可以通过下列任何方式访问该特性： attributes 属性、 getAttributeNode()方法以及 getAttribute()方法。其中， attributes
+> 和 getAttributeNode()都会返回对应特性的 Attr 节点，而 getAttribute()则只返回特性的值。
 
 ## DOM操作技术
 
 * 动态脚本
+
+  > 而这一节要讨论的动态脚本，指的是在页面加载时不存在，但将来的某一时刻通过修改 DOM 动态添加的脚本
+
+  * 插入外部文件
+
+    > 动态加载的外部 JavaScript 文件能够立即运行
+
+    ```js
+    function loadScript(url){
+    	var script = document.createElement("script");
+    	script.type = "text/javascript";
+    	script.src = url;
+    	document.body.appendChild(script);
+    }
+    loadScript("client.js");
+    ```
+
+  * 直接插入 JavaScript 代码
+
+    ```json
+    function loadScriptString(code){
+    	var script = document.createElement("script");
+    	script.type = "text/javascript";
+      try {
+      	script.appendChild(document.createTextNode(code));
+      } catch (ex){
+      	script.text = code;
+      }
+      document.body.appendChild(script);
+    }
+    loadScriptString("function sayHi(){alert('hi');}");
+    ```
+
+    > 以这种方式加载的代码会在全局作用域中执行，而且当脚本执行后将立即可用
+
 * 动态样式
+
+  >  <link>元素用于包含来自外部的文件，而<style>元素用于指定嵌入的样式。与动态脚本类似，所谓动态样式是指在页面刚加载时不存在的样式；动态样式是在页面加载完成后动态添加到页面中的。
+
+  * 外部文件
+
+  ```js
+  function loadStyles(url){
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+    var head = document.getElementsByTagName("head")[0];
+    head.appendChild(link);
+  }
+  loadStyles("styles.css");
+  ```
+
+  > 加载外部样式文件的过程是异步的，也就是加载样式与执行 JavaScript 代码的过程没有固定的次序
+
+  * 直接添加
+
+  ```js
+  function loadStyleString(css){
+  	var style = document.createElement("style");
+  	style.type = "text/css";
+      try{
+      style.appendChild(document.createTextNode(css));
+      } catch (ex){
+      style.styleSheet.cssText = css;
+      }
+      var head = document.getElementsByTagName("head")[0];
+      head.appendChild(style);
+  }
+  loadStyleString("body{background-color:red}");
+  ```
+
+  > 这种方式会实时地向页面中添加样式，因此能够马上看到变化
+
 * 操作表格
+
+  * 为<table>元素添加的属性和方法如下
+
+     caption：保存着对<caption>元素（如果有）的指针。
+     tBodies：是一个<tbody>元素的 HTMLCollection。
+     tFoot：保存着对<tfoot>元素（如果有）的指针。
+     tHead：保存着对<thead>元素（如果有）的指针。
+     rows：是一个表格中所有行的 HTMLCollection。
+     createTHead()：创建<thead>元素，将其放到表格中，返回引用。
+     createTFoot()：创建<tfoot>元素，将其放到表格中，返回引用。
+     createCaption()：创建<caption>元素，将其放到表格中，返回引用。
+     deleteTHead()：删除<thead>元素。
+     deleteTFoot()：删除<tfoot>元素。
+     deleteCaption()：删除<caption>元素。
+     deleteRow(pos)：删除指定位置的行。
+     insertRow(pos)：向 rows 集合中的指定位置插入一行。
+
+  * 为<tbody>元素添加的属性和方法如下。
+
+     rows：保存着<tbody>元素中行的 HTMLCollection。
+     deleteRow(pos)：删除指定位置的行。
+     insertRow(pos)：向 rows 集合中的指定位置插入一行，返回对新插入行的引用。
+    为<tr>元素添加的属性和方法如下。
+
+  * 为<tr>元素添加的属性和方法如下。
+
+     cells：保存着<tr>元素中单元格的 HTMLCollection。
+     deleteCell(pos)：删除指定位置的单元格。
+     insertCell(pos)：向 cells 集合中的指定位置插入一个单元格，返回对新插入单元格的引用。
+
+
 * 使用NodeList
+
+  > 所有 NodeList 对象都是在访问 DOM 文档时实时运行的查询。
+
+  > 应该尽量减少访问 NodeList 的次数。因为每次访问 NodeList，都会运行一次基于文
+  > 档的查询。所以，可以考虑将从 NodeList 中取得的值缓存起来
+
 
