@@ -13,8 +13,7 @@
 
 ####针对XML命名空间的变化
 
-> 有了 XML 命名空间，不同 XML 文档的元素就可以混合在一起，共同构成格式良好的文档，而不
-> 必担心发生命名冲突。HTML 不支持 XML 命名空间，但 XHTML 支持 XML 命名空间
+> 有了 XML 命名空间，不同 XML 文档的元素就可以混合在一起，共同构成格式良好的文档，而不必担心发生命名冲突。HTML 不支持 XML 命名空间，但 XHTML 支持 XML 命名空间
 
 > 命名空间要使用 xmlns 特性来指定。XHTML 的命名空间是 http://www.w3.org/1999/xhtml，
 
@@ -250,60 +249,98 @@ var iframeDoc = iframe.contentDocument; //在 IE8 以前的版本中无效
 
 ##样式
 
-> 确定浏览器是否支持 DOM2 级定义的 CSS 能力
->
-> ```js
-> var supportsDOM2CSS = document.implementation.hasFeature("CSS", "2.0");
-> var supportsDOM2CSS2 = document.implementation.hasFeature("CSS2", "2.0")
-> ```
+ HTML 中定义样式的方式有 3 种：
 
-####访问元素的样式
+* 通过<link/>元素包含外部样式表文件
+* 使用<style/>元素定义嵌入式样式
+* 使用 style 特性定义针对特定元素的样式
 
-> 任何支持 style 特性的 HTML 元素在 JavaScript 中都有一个对应的 style 属性。 这个 style 对象是 CSSStyleDeclaration 的实例，包含着通过 HTML 的 style 特性指定的所有样式信息，但不包含与外部样式表或嵌入样式表经层叠而来的样式。在 style 特性中指定的任何 CSS 属性都将表现为这个style 对象的相应属性。对于使用短划线（分隔不同的词汇，例如 background-image）的 CSS 属性名，必须将其转换成驼峰大小写形式，才能通过 JavaScript 来访问。
+确定浏览器是否支持 DOM2 级定义的 CSS 能力
+
+```js
+var supportsDOM2CSS = document.implementation.hasFeature("CSS", "2.0");
+var supportsDOM2CSS2 = document.implementation.hasFeature("CSS2", "2.0")
+```
+
+### 访问元素的样式
+
+任何支持 style 特性的 HTML 元素在 JavaScript 中都有一个对应的 style 属性。 这个 style 对象是 CSSStyleDeclaration 的实例，包含着通过 HTML 的 style 特性指定的所有样式信息，但不包含与外部样式表或嵌入样式表经层叠而来的样式。在 style 特性中指定的任何 CSS 属性都将表现为这个style 对象的相应属性。对于使用短划线（分隔不同的词汇，例如 background-image）的 CSS 属性名，必须将其转换成驼峰大小写形式，才能通过 JavaScript 来访问。
 
 ```
 background-image  // style.backgroundImage
 ```
 
-> 其中float不能直接转换 。由于 float 是 JavaScript 中的保留字。应该用“ cssFloat”而 IE支持的则是 styleFloat
+float不能直接转换 。由于 float 是 JavaScript 中的保留字。应该用“ cssFloat”而 IE支持的则是 styleFloat
 
-* DOM 样式属性和方法
+#### 1.DOM 样式属性和方法
 
- cssText：如前所述，通过它能够访问到 style 特性中的 CSS 代码。
- length：应用给元素的 CSS 属性的数量。
- parentRule：表示 CSS 信息的 CSSRule 对象。本节后面将讨论 CSSRule 类型。
- getPropertyCSSValue(propertyName)：返回包含给定属性值的 CSSValue 对象。
- getPropertyPriority(propertyName)：如果给定的属性使用了!important 设置，则返回
-"important"；否则，返回空字符串。
- getPropertyValue(propertyName)：返回给定属性的字符串值。
- item(index)：返回给定位置的 CSS 属性的名称。
- removeProperty(propertyName)：从样式中删除给定属性。
- setProperty(propertyName,value,priority)：将给定属性设置为相应的值，并加上优先
-权标志（"important"或者一个空字符串）。
+“ DOM2 级样式”规范还为 style 对象定义了一些属性和方法。这些属性和方法在提供元素的 style特性值的同时，也可以修改样式。
 
-> 在读取模式下，cssText 返回浏览器对 style特性中 CSS 代码的内部表示。
->
-> 在写入模式下，赋给 cssText 的值会重写整个 style 特性的值；
+* cssText：如前所述，通过它能够访问到 style 特性中的 CSS 代码。
+* item(index)：返回给定位置的 CSS 属性的名称。
+* length：应用给元素的 CSS 属性的数量。
+* getPropertyValue(propertyName)：返回给定属性值的字符串表示。
+* getPropertyCSSValue(propertyName)：返回包含给定属性值的 CSSValue 对象。
+* removeProperty(propertyName)：从样式中删除给定属性。
+* parentRule：表示 CSS 信息的 CSSRule 对象。本节后面将讨论 CSSRule 类型。
+* getPropertyPriority(propertyName)：如果给定的属性使用了!important 设置，则返回"important"；否则，返回空字符串。
 
-> getPropertyValue()方法取得的始终都是 CSS 属性值的字符串表示
->
->  getPropertyCSSValue()方法，它返回一个包含两个属性的 CSSValue 对象，这两个属性分别是： cssText 和 cssValueType。其中， cssText 属性的值与 getPropertyValue()返回的值相同，而 cssValueType 属性则是一个数值常量，表示值的类型： 0 表示继承的值， 1 表示基本的值， 2 表示值列表， 3 表示自定义的值
 
->  removeProperty()方法。使用这个方法移除一个属性，意味着将会为该属性应用默认的样式```myDiv.style.removeProperty("border");```
+* setProperty(propertyName,value,priority)：将给定属性设置为相应的值，并加上优先权标志（"important"或者一个空字符串）。
 
-* 计算的样式
-
-> 从其他样式表层叠而来并影响到当前元素的样式信息
-
-> “ DOM2 级样式”增强了 document.defaultView，提供了getComputedStyle()方法。这个方法接受两个参数：要取得计算样式的元素和一个伪元素字符串（例如":after"）。如果不需要伪元素信息，第二个参数可以是 null。 getComputedStyle()方法返回一个 CSSStyleDeclaration 对象（与 style 属性的类型相同），其中包含当前元素的所有计算的样式
+设置 cssText 是为元素应用多项变化最快捷的方式，因为可以一次性地应用所有变化。在读取模式下，cssText 返回浏览器对 style特性中 CSS 代码的内部表示。在写入模式下，赋给 cssText 的值会重写整个 style 特性的值；
 
 ```js
-var myDiv = document.getElementById("myDiv");
-var computedStyle = document.defaultView.getComputedStyle(myDiv, null);
-alert(computedStyle.backgroundColor); // "red"
-alert(computedStyle.width); // "100px"
-alert(computedStyle.height); // "200px"
-alert(computedStyle.border); // 在某些浏览器中是"1px solid black"
+myDiv.style.cssText = "width: 25px; height: 100px; background-color: green";
+alert(myDiv.style.cssText);
+```
+
+设计 length 属性的目的，就是将其与 item()方法配套使用，以便迭代在元素中定义的 CSS 属性。
+
+取得 CSS 属性名（"background-color"，不是"backgroundColor"）。然后，就可以在 getPropertyValue()中使用取得的属性名进一步取得属性的值,如下：
+
+```js
+var prop, value, i, len;
+for (i=0, len=myDiv.style.length; i < len; i++){
+    prop = myDiv.style[i]; //或者 myDiv.style.item(i)
+    value = myDiv.style.getPropertyValue(prop);
+    alert(prop + " : " + value);
+}
+```
+
+getPropertyValue()方法取得的始终都是 CSS 属性值的字符串表示。 getPropertyCSSValue()方法，它返回一个包含两个属性的 CSSValue 对象，对象包含 cssText 和 cssValueType。其中， cssText 属性的值与 getPropertyValue()返回的值相同，而 cssValueType 属性则是一个数值常量，表示值的类型： 0 表示继承的值， 1 表示基本的值， 2 表示值列表， 3 表示自定义的值。
+
+removeProperty()方法。使用这个方法移除一个属性，意味着将会为该属性应用默认的样式```myDiv.style.removeProperty("border");```
+
+#### 2.计算的样式
+
+虽然 style 对象能够提供支持 style 特性的任何元素的样式信息，但它不包含那些从其他样式表层叠而来并影响到当前元素的样式信息。“ DOM2 级样式”增强了 document.defaultView，提供了getComputedStyle()方法。这个方法接受两个参数：要取得计算样式的元素和一个伪元素字符串（例如":after"）。如果不需要伪元素信息，第二个参数可以是 null。 getComputedStyle()方法返回一个 CSSStyleDeclaration 对象（与 style 属性的类型相同），其中包含当前元素的所有计算的样式。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Computed Styles Example</title>
+    <style type="text/css">
+        #myDiv {
+        background-color: blue;
+        width: 100px;
+        height: 200px;
+        }
+    </style>
+</head>
+<body>
+	<div id="myDiv" style="background-color: red; border: 1px solid black"></div>
+    <script>
+    var myDiv = document.getElementById("myDiv");
+	var computedStyle = document.defaultView.getComputedStyle(myDiv, null);
+    alert(computedStyle.backgroundColor); // "red"
+    alert(computedStyle.width); // "100px"
+    alert(computedStyle.height); // "200px"
+    alert(computedStyle.border); // 在某些浏览器中是"1px solid black"
+    </script>
+</body>
+</html>
 ```
 
 > IE 不支持 getComputedStyle()方法。在 IE 中，每个具有 style 属性的元素还有一个 currentStyle 属性。这个属性是 CSSStyleDeclaration 的实例，包含当前元素全部计算后的样式
@@ -317,20 +354,62 @@ alert(computedStyle.height); //"200px"
 alert(computedStyle.border); //undefined
 ```
 
-****所有计算的样式都是只读的；不能修改计算后样式对象中的 CSS 属性。此外，计算后的样式也包含属于浏览器内部样式表的样式信息，因此任何具有默认值的 CSS 属性都会表现在计算后的样式中。****
+所有计算的样式都是只读的；不能修改计算后样式对象中的 CSS 属性。此外，计算后的样式也包含属于浏览器内部样式表的样式信息，因此任何具有默认值的 CSS 属性都会表现在计算后的样式中。
 
-####操作样式表
+### 操作样式表
 
-####元素大小
+#### 1.css规则
+
+#### 2.创建规则
+
+#### 3.删除规则
+
+### 元素大小
+
+####1.偏移量
+
+####2.客户区大小
+
+####3.滚动大小
+
+####4.确定元素大小
 
 ##遍历
 
-NodeIterator
+###NodeIterator
 
-TreeWalker
+###TreeWalker
 
 ##范围
 
-DOM中的范围
+###DOM中的范围
 
-IE8及更早版本中的范围
+####1.用 DOM 范围实现简单选择
+
+####2.用 DOM 范围实现复杂选择
+
+####3.操作 DOM 范围中的内容
+
+####4.插入 DOM 范围中的内容
+
+####5.折叠 DOM 范围
+
+####6.比较 DOM 范围
+
+####7.复制 DOM 范围
+
+####8.清理 DOM 范围
+
+###IE8及更早版本中的范围
+
+####1.用 IE 范围实现简单的选择
+
+####2.使用 IE 范围实现复杂的选择
+
+####3.操作 IE 范围中的内容
+
+####4.折叠 IE 范围
+
+####5.比较 IE 范围
+
+####6.复制 IE 范围
