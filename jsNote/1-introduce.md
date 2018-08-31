@@ -24,3 +24,17 @@ JavaScript实现包括如下三个部分
   ```html
   <script type="text/javascript" async src="example1.js"></script>
   ```
+
+总结：
+
+1. <script>的六种标签属性
+
+2. script标签放置位置
+
+   正常放置在页面后面，因js解析执行时会阻滞页面加载
+
+   页面渲染有关的js要放前面
+
+3. script引用外部文件可缓存，可维护
+
+   内部文件减少链接数，提升性能

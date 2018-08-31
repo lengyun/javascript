@@ -5,8 +5,9 @@
 ## ECMAScript
 
 1. [简介](./jsNote/1-introduce.md)
-2. [基本概念](./jsNote/2-BasicConcept.md)
-3. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
+2. [基本概念1](./jsNote/2-BasicConcept.md)
+3. [基本概念2](./jsNote/2-BasicConcept2.md)
+4. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
 
 
 4. [引用类型](./jsNote/4-referenceType.md)
@@ -59,13 +60,32 @@
 
 ## 错误处理与调试
 
-1. 浏览器报告的错误
+1. [浏览器报告的错误](./jsNote/)
+2. [错误处理](./jsNote/17-errorAndDebugger.md)
+3. [调试技术](./jsNote/)
+4. [常见的IE错误](./jsNote/)
 
-2. 错误处理
 
-3. 调试技术
+## JSON
 
-4. 常见的IE错误
+1. [语法](./jsNote/20-json.md)
+2. [解析与序列化](./jsNote/)
 
-   ​
+## Ajax 与 Comet
+
+1. [XMLHttpRequest对象](./jsNote/21-AjaxAndComet.md)
+2. XMLHttpRequest 2级
+3. 进度事件
+4. 跨源资源共享
+5. 其他跨域技术
+6. 安全
+
+
+## 高级技巧
+
+1. [高级函数](./jsNote/22-advancedSkills.md)
+2. 防篡改对象
+3. 高级定时器
+4. 自定义事件
+5. 拖放
 
