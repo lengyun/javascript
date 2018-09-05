@@ -2,12 +2,14 @@
 
 > command+点击
 
-## ECMAScript
+## 1ECMAScript
 
-1. [简介](./jsNote/1-introduce.md)
-2. [基本概念1](./jsNote/2-BasicConcept.md)
-3. [基本概念2](./jsNote/2-BasicConcept2.md)
-4. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
+1. [简介](./jsNote/1-1-introduce.md)
+2. [基本概念](./jsNote/1-2-BasicConcept.md)
+3. [数据类型](./jsNote/1-3-dataType.md)
+4. [一元操作符](./jsNote/1-4-unaryOperator.md)
+5. [逻辑运算符](./jsNote/1-5-logicOperation.md)
+6. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
 
 
 4. [引用类型](./jsNote/4-referenceType.md)
@@ -15,18 +17,18 @@
 6. [面向对象程序设计](./jsNote/5-Object-Oriented.md)
 7. [函数表达式](./jsNote/6-FunctionExpression.md)
 
-## BOM
+## 2BOM
 
 1. [BOM](./jsNote/7-BOM.md)
 2. [客户端检测](./jsNote/8-clientMonitor.md)
 
-## DOM
+## 3DOM
 
 1. [DOM](./jsNote/9-DOM.md)
 2. [DOM扩展](./jsNote/10-DOM扩展.md)
 3. [DOM2和DOM3](./jsNote/11-DOM2和DOM.md)
 
-## 事件13
+## 事件
 
 1. [事件流](./jsNote/13-1eventFlow.md)
 2. [事件处理程序](./jsNote/13-2eventFunction.md)
@@ -35,7 +37,7 @@
 5. [内存和性能](./jsNote/13-5RAMandPerformance.md)
 6. [模拟事件](./jsNote/13-6mockEvent.md)
 
-## 表单脚本14
+## 表单脚本
 
 1. [表单基础知识](./jsNote/14-1formBasic.md)
 2. [文本框脚本](./jsNote/14-2input.md)
@@ -44,14 +46,14 @@
 5. [富文本编辑](./jsNote/14-5textEdit.md)
 
 
-## 使用Canvas绘画15
+## 使用Canvas绘画
 
 1. [基本用法](./jsNote/15-Canvas.md)
 2. [2D上下文](./jsNote/15-Canvas.md)
 3. [webGL](./jsNote/15-Canvas.md)
 
 
-## HTML5脚本编程16
+## HTML5脚本编程
 
 1. [跨文档消息传递](./jsNote/16-1cross-documentMessaging.md)
 2. [原生拖拽](./jsNote/16-2drag.md)
