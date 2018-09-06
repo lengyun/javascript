@@ -9,7 +9,8 @@
 3. [数据类型](./jsNote/1-3-dataType.md)
 4. [一元操作符](./jsNote/1-4-unaryOperator.md)
 5. [逻辑运算符](./jsNote/1-5-logicOperation.md)
-6. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
+6. [加减乘除和比较赋值](./jsNote/1-6-math.md)
+7. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
 
 
 4. [引用类型](./jsNote/4-referenceType.md)
