@@ -86,25 +86,3 @@ a?b:c
 x=a?b:c?d!:e?f:g //三目运算符  
 x=a?b:(c?d:(e?f:g)) // 都是三目操作符从右向左
 ```
-
-## 语句
-
-- if语句
-- do-while语句
-- while语句
-- for语句
-- for-in语句
-- label语句
-- break和continue语句
-- with语句
-- switch语句
-
-## 函数
-
-- 理解参数：
-
-  > ECMAScript 中的参数在内部是用一个数组来表示的。函数接收到的始终都是这个数组，而不关心数组中包含哪些参数。在函数体内可以通过 `arguments` 对象来访问这个参数数组，从而获取传递给函数的每一个参数
-  >
-  >  arguments 对象的 length 属性可以获知有多少个参数传递给了函数
-
-- 没要重载

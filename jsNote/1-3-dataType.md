@@ -68,18 +68,15 @@ alert(typeof (a==b)) //返回 "boolean"
   **不同点：**
 
   1. null 是关键字，undefined不是关键字
-  2. null 是特殊对象，undefined只是数据类型，本质是win对象属性，这个属性的值叫做未定义
-  3. undefined代表未初始化的变量，null已经初始化的一个特殊对象
-  4. typeof查看类型时返回不同。undefined返回"undefined"，null返回"object"
-  5. 试图传化为数字时，undefined 返回NaN，null返回0
+  2. null 本质是一个空对象，undefined是win对象的属性，虽然翻译叫未定义，但undefined是个已经定义的属性，它的值叫做未定义undefined。函数中定义undefined提高性能。
+  3. typeof查看类型时返回不同。undefined返回"undefined"，null返回"object"
+  4. 试图传化为数字时，undefined 返回NaN，null返回0
 
   **用法：**
 
-  声明变量时，必须赋值时用null
-
-  全等=== 检测某个值是否存在时用undefined 
-
-  全等=== 检测某个值是否为空 null
+  1. 声明变量而且必须赋值时，或者创建一个对象要给对象的某个属性赋空值时，可以使用null
+  2. 检测某个值是否存在时用 === undefined ，通常用于判断函数中的某个参数是否存在时。
+  3. 检测某个值是否存在或者是否为空时用 == null
 
   **建议：**
 
@@ -97,7 +94,11 @@ alert(typeof (a==b)) //返回 "boolean"
 
    转化为布尔类型的简写方法 ：!!
 
+  > 空对象{} 和空数组[] 转化为布尔值都是true，因对象转化为布尔值都是true
+
 - Number
+
+  数字可分为3类：常规的数字，Infinity无穷，NaN
 
   * 整数：正常使用
 
@@ -165,6 +166,8 @@ alert(typeof (a==b)) //返回 "boolean"
 
 - String
 
+  字符串的本质是Ucode编码
+
   字符串建议使用单引号，如果单引号的字符串中有单引号 使用 \' 字符字面量
 
   字符字面量可以出现在字符串中的任意位置，而且也将被作为一个字符来解析
@@ -224,7 +227,7 @@ alert(typeof (a==b)) //返回 "boolean"
 
 * 对象类型跟基础数据类型相比的**不同点**：
 
-  1. 对象是**有属性**的，原始数据是没有数据的。对象是由属性构成的无序合集。
+  1. 对象是**有属性**的，原始数据是没有属性的。对象是由属性构成的无序合集。
 
      对象的所有属性所对应的值，可以是原始数据类型，也可以是对象。
 
@@ -232,7 +235,7 @@ alert(typeof (a==b)) //返回 "boolean"
 
   2. **有方法**，方法是对象的一种特殊属性，方法是由函数组成的为了实现某种功能。方法也是一种特殊的对象。
 
-  3. 对象是**可以改变**的。
+  3. 对象是**可以改变**的，基础数据类型是不能改变的。
 
 
 * **对象的分类：**
@@ -241,13 +244,13 @@ alert(typeof (a==b)) //返回 "boolean"
 
      js语言自带的对象17个
 
-     内部对象分类：
+     内部对象分类：使用时不用new
 
      - 错误的对象
 
      - 常用对象
 
-       （布尔类型，字符串，数字类型，数组，时间，函数function ，Object，正则表达式）
+       布尔类型，字符串类型，数字类型，数组，时间，函数function ，Object，正则表达式）
 
      - 内置对象
 
@@ -272,31 +275,6 @@ alert(typeof (a==b)) //返回 "boolean"
   ```
 
   原始数据类型的比较是值的比较，对象的比较是引用的比较
-
-* **对象转化为原始数据类型**
-
-  - 对象转化为Boolean
-
-    对象类型转化为布尔类型都返回 true。
-
-    > 把false这个布尔类型转化为对象 Object(false) 再转化为布尔Boolean(Object(false))就成了true
-
-    ```js
-    Boolean(Object(false)) //true
-    Boolean(new Boolean(false)) //true
-    ```
-
-  - 对象转化为字符串
-
-    先toString() 后 valueOf() 
-
-  - 对象转化为数字
-
-    先valueOf() 后 toString()  
-
-    toString() 把当前对象通过字符串形式表示出来
-
-    valueOf() 返回原始值，没有原始值返回对象
 
 * **如何创建对象**
 
@@ -326,7 +304,125 @@ alert(typeof (a==b)) //返回 "boolean"
 
 ![js对象属性查询解释器执行流程](./img/jsObjectFindAttributeFlow.png)
 
+### 数据类型转换
 
+* 原始类型到字符串转换
+
+  > String() 或 直接加空字符串
+
+* 原始类型到数字
+
+  > Number() 或者一元加操作符 +"123"
+
+  underfined 到数字 是NaN
+
+  null 到数字是 0
+
+  true 1 
+
+  false 0
+
+  字符串中都是数字 直接去掉引号
+
+  字符串中不是数字 NaN
+
+  空字符串 0
+
+* 原始类型到布尔值
+
+  > Boolean() 或者 !!
+
+  **undefined**、**null**、 **0**、 **-0**、 **NaN** 、**' '** 这6个为false 其他为true
+
+* 原始类型到对象
+
+  * null 和 underfined 转化为对象为空对象或报错
+
+  * 数字 和 布尔 转化为对象:
+
+    得到数字对象和布尔对象，他的值是被转化的值
+
+    ```js
+    Boolean {false} //Boolean {false}
+    Object(123) //Number {123}
+    ```
+
+
+  * 字符串转换为对象
+
+    得到字符串对象，它的值是被转化的值。
+
+    还得到length属性表示字符长度
+
+    另外每一个字符都会被创建字符的索引
+
+    ```js
+    Object("qweqwe") //String {"qweqwe"}
+    ```
+
+* 对象到原始类型
+
+  - 对象转化为Boolean
+
+    对象类型转化为布尔类型都返回 true。
+
+    > 把false这个布尔类型转化为对象成为Object(false) 再转化为布尔Boolean(Object(false))就成了true
+
+    ```js
+    Boolean(Object(false)) //true
+    Boolean(new Boolean(false)) //true
+    ```
+
+  - 对象转化为字符串
+
+    先toString() 后 valueOf() 
+
+    先toString()看返回的是否为原始值，是就转为字符串。不是就使用valueOf()看返回的是不是原始类型，是就转为字符串。
+
+  - 对象转化为数字
+
+    先valueOf() 后 toString()  
+
+    先valueOf()返回的是原始值就直接返回，如果还是对象再调用toString() 看返回的是否是原始类型，如果是原始就转化为数字，如果还是对象就报错
+
+    toString() 把当前对象通过字符串形式表示出来
+
+    valueOf() 返回原始值，没有原始值返回对象
+
+    ```js
+    Number([]) //0
+    //[].valueOf()得到还是[]
+    //[].toString() 得到 ""
+    //Number('') 得到 0
+
+    Number({}) //NaN
+    //a={}
+    //a.valueOf()得到还是{}
+    //a.toString() 得到 "[object Object]"
+    //Number('[object Object]') 得到 NaN
+    ```
+
+     **toString()**  是可以接受参数的，参数是2-36这个范围，表示几进制
+
+    ```js
+    //随机生成一个字母或数字混排的时候
+    Math.random().toString(36)
+    //"0.19sx7el6ichj"
+    ```
+
+### 变量
+
+定义变量是否使用var区别：
+
+1. 使用var 定义的是局部变量，不使用var定义的是全局变量
+2. 使用了var定义的变量是不可以删除的，不使用var定义的变量是可以被删除的（对象的属性可以被删除）。
+3. 使用了var定义的变量会被提前，不使用var定义的变量不会被提前。
+
+**原理：**
+
+使用var才是真正的定义了一个变量，所有定义的变量都有一个作用域。作用域是当前的函数。
+
+不使用var不是定义了一个变量，是给window增加了一个属性。没有使用var定义的变量程序一层层的查找直到window还没找到。就在win上增加一个属性，就成了全局属性，对象上的属性是可以被删除的。
 
 ------
 
