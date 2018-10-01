@@ -2,7 +2,7 @@
 
 > command+点击
 
-## 1ECMAScript
+## ECMAScript
 
 1. [简介](./jsNote/1-1-introduce.md)
 2. [基本概念](./jsNote/1-2-BasicConcept.md)
@@ -11,7 +11,8 @@
 5. [逻辑运算符](./jsNote/1-5-logicOperation.md)
 6. [加减乘除和比较赋值](./jsNote/1-6-math.md)
 7. [流程控制语句](./jsNote/1-7statement.md)
-8. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
+8. [js中的变量](./jsNote/1-8var.md)
+9. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
 
 
 4. [引用类型](./jsNote/4-referenceType.md)
@@ -19,12 +20,12 @@
 6. [面向对象程序设计](./jsNote/5-Object-Oriented.md)
 7. [函数表达式](./jsNote/6-FunctionExpression.md)
 
-## 2BOM
+## BOM
 
 1. [BOM](./jsNote/7-BOM.md)
 2. [客户端检测](./jsNote/8-clientMonitor.md)
 
-## 3DOM
+## DOM
 
 1. [DOM](./jsNote/9-DOM.md)
 2. [DOM扩展](./jsNote/10-DOM扩展.md)
