@@ -278,7 +278,7 @@ alert(typeof (a==b)) //返回 "boolean"
 
 * **如何创建对象**
 
-  - 对象直接量
+  - 对象字面量
 
     ```js
     var person = {

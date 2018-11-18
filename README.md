@@ -11,8 +11,19 @@
 5. [逻辑运算符](./jsNote/1-5-logicOperation.md)
 6. [加减乘除和比较赋值](./jsNote/1-6-math.md)
 7. [流程控制语句](./jsNote/1-7statement.md)
-8. [js中的变量](./jsNote/1-8var.md)
-9. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
+8. [变量作用域和内存](./jsNote/1-8varScopeMemory.md)
+9. [数组使用](./jsNote/1-9ArrayUse.md)   [数组去重](./jsNote/1-9ArrayDedupliation.md)
+10. [时间对象](./jsNote/1-10date.md)
+11. [函数的创建](./jsNote/1-11functionCreat.md)  [js中的作用域](./jsNote/1-11scope.md)  [任意门详解闭包](./jsNote/1-11closure.md) 
+12. [包装对象](./jsNote/1-12packObject.md)   [单体内置对象](./jsNote/1-12builtinObject.md)
+13. [面向对象的设计模式](./jsNote/1-13object-oriented.md)   [js中的继承](./jsNote/1-13inherit.md)
+14. 
+
+
+
+### readNote
+
+1. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
 
 
 4. [引用类型](./jsNote/4-referenceType.md)

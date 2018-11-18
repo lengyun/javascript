@@ -367,7 +367,8 @@
           break name
       }
   }
-  name:console.log("目标语句");//跳转到结尾
+  //跳转到结尾
+  name : 
   ```
 
 * **return**
