@@ -2,7 +2,7 @@
 
 > command+点击
 
-##ECMAScript
+## ECMAScript
 
 1. [变量、作用域、内存](./jsNote/3-variableScopeMemory.md)
 
