@@ -22,5 +22,20 @@
 ## DOM
 
 1. [DOM概览](./shayi/3-1DOM.md)
+2. DOM节点操作
+   1. [动态加载js](./shayi/3-2-1dynamicAddJS.md)
+   2. [动态加载css](./shayi/3-2-2dynamicAddCSS.md)
+   3. [动态和静态合集](./shayi/3-2-3dynamicAndStatic.md)
+   4. [class和焦点管理](./shayi/3-2-4classAndfocus.md)
+   5. [使用字符串操作DOM节点](./shayi/3-2-5stringMendDOM.md)
+   6. [JS的滚动操作](./shayi/3-2-6scroll.md)
+   7. [脚本化CSS](./shayi/3-2-7scriptCss.md)
+   8. [内链样式和外链样式操作](./shayi/3-2-8scriptCss.md)
 
-### 
+## 事件
+
+1. [事件的基本操作](./shayi/4-1eventBasic.md)
+2. [事件优先级和事件对象](./shayi/4-2eventPriorityObject.md)
+3. [鼠标事件](./shayi/4-3moustEvent.md)
+
+## 面试
