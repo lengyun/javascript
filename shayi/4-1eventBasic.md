@@ -153,13 +153,16 @@ this指针和event对象和html事件相同，this指针也指向了当前的元
          ```js
           var passiveflg
              try {
-               var obj= Object.defineProperties({},'passive',{
-                 get:function(){passiveflg:true}
+               var obj= Object.defineProperty({},'passive',{
+                 get:function(){
+                     passiveflg=true
+                 }
                })
-               window.addEventListener('abc',null,obj)
-               // defineProperties可以针对某一个对象里面具体的属性它在读和写的时候指定不同的事件
+               // defineProperty可以针对某一个对象里面具体的属性它在读和写的时候指定不同的事件
              } catch (e) {
              }
+         window.addEventListener('abc',null,obj)
+         console.log("passiveflg:"+passiveflg)
          ```
 
   * removeEventListener() 删除事件
