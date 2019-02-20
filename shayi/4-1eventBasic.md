@@ -146,12 +146,12 @@ this指针和event对象和html事件相同，this指针也指向了当前的元
 
          **什么样的浏览器会进行passive优化？**
 
-         ​	从理论上讲所有**consolable***为true的事件都可以进行passive
+         ​	从理论上讲所有**cancelable**（事件对象的属性）为true的事件都可以进行passive
 
          **如何判断浏览器是否支持passive属性？**
 
          ```js
-          var passiveflg
+         var passiveflg
              try {
                var obj= Object.defineProperty({},'passive',{
                  get:function(){
