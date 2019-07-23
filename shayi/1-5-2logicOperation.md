@@ -42,6 +42,7 @@
 
      ```js
      true || false
+     a&&b||c
      ```
 
   2. 或者
