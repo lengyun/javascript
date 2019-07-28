@@ -75,7 +75,7 @@ JavaScript实现包括如下三个部分
 
 5. async 和 defer能不用就不用。
 
-##内部文件使用**
+##内部文件使用 *
 
 可扩展超文本标记语言，即 XHTML（Extensible HyperText Markup Language），是将 HTML 作为
 XML 的应用而重新定义的一个标准。编写 XHTML 代码的规则要比编写 HTML 严格得多，而且直接影

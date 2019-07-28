@@ -124,9 +124,9 @@ String() Number() Boolean() Object()
   ```js
   var num = 10;
   num = num + 10;
-  // =优先级最低，所有先num + 10 得到20 然后赋值给num
+  // =优先级最低，所以先num + 10 得到20 然后赋值给num
   var age = 29;
-  ++age; //age = age + 1
+  age++; //age = age + 1
   ```
 
 - 复合赋值(带操作符的赋值)
@@ -224,7 +224,7 @@ String() Number() Boolean() Object()
    ```
 
 
-###比较==的特殊操作
+### 比较==的特殊操作
 
 js的解释器当中== 的转换规则比较复杂
 
