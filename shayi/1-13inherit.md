@@ -208,7 +208,7 @@ function B(obj){
 B.prototype = new A() // 第一个地方 想办法修改这里
 // new A() 目的是为了拿到原型对象的副本，可以用寄生模式去拿
 B.prototype.--proto-- = A.prototype
-// --proto-- 不能用使用寄生模式
+// --proto-- 不能用,使用寄生模式
 B.prototype.constructor = B;
 ```
 
@@ -232,8 +232,9 @@ function object(o){
 }
 function inheritPrototype(B,A){
     var p = object(A.prototype)
+    // var p = Object.create(A.prototype) // ES5方式
     p.constructor = B
-	B.prototype=p
+	  B.prototype=p
 }
 function B (){
     A.apply(this,[arguments])
@@ -295,3 +296,4 @@ B拷过来属性可能是个引用。
 **深克隆**
 
 当我们去拷贝一个属性的时候首先去判断一下这个属性所对应的值的数据类型。如果是一个原始类型直接拷过来。如果不是原始类型说明是一个对象，这时我们要再次执行一个for循环，把对象里面所有的值再拷过来。这时就涉及到递归。
+

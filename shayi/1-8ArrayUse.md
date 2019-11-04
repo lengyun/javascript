@@ -175,7 +175,7 @@
 
     ```js
     var colors = ["red", "blue", "green"]
-    colors.constructor == Array // true
+    colors.constructor === Array // true
     ```
 
     **缺点**：instanceof 和 constructor 如果网页中包含多个框架，那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的 Array 构造函数。如果你从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。

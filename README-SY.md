@@ -14,10 +14,15 @@
    1. [数组使用](./shayi/1-8ArrayUse.md)  
    2.  [数组去重](./shayi/1-8ArrayDedupliation.md)
 9. [时间对象](./shayi/1-9date.md)
-10. [函数的创建](./shayi/1-11functionCreat.md)  [js中的作用域/函数表达式](./shayi/1-11scope.md)  [任意门详解闭包](./shayi/1-11closure.md) 
-11. [包装对象](./shayi/1-12packObject.md)   [单体内置对象](./shayi/1-12builtinObject.md)
-12. [面向对 象的设计模式](./shayi/1-13object-oriented.md)   [js中的继承](./shayi/1-13inherit.md)
-13. [综合知识复习](./shayi/1-14summary.md)
+10. 函数
+   1. [函数的创建](./shayi/1-10functionCreat.md) 
+   2. [js中的作用域/函数表达式](./shayi/1-10scope.md) 
+   3. [任意门详解闭包](./shayi/1-10closure.md) 
+11. [包装对象](./shayi/1-11packObject.md)  
+12.  [单体内置对象](./shayi/1-12builtinObject.md)
+13. [面向对象的设计模式](./shayi/1-13object-oriented.md)  
+14.  [js中的继承](./shayi/1-13inherit.md)
+15. [综合知识复习](./shayi/1-15summary.md)
 
 ## BOM
 

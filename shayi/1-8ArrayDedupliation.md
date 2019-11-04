@@ -1,89 +1,102 @@
 ## 数组去重复
 
-1. 双重循环。创建新空数组，循环数组的每一项与新数组的每一项比较，不存在就添加到新的空数组中。（回转寿司，跟自己桌子上的对比）
+### 创建数组
 
-   * break 和标签语句 结束循环
+```js
+let arr = Array.from({ length: 20 }, () => Math.random() * 10 | 0)
+console.log(arr)
+```
 
-     ```js
-     var nembArray = [1, 5, 2, 12, 3, 2, 3, 3, 4, 32, 41, 2, 1, 12, 31, 23, 23, 12, 3, 23]
-     var newArray = []
-     for (var i = 0; i < nembArray.length; i++) {
-         var flg =true;
-         start : 
-         for (var k = -1; k < newArray.length; k++) {
-             if (newArray[k] === nembArray[i]) {
-                 flg=false
-                 break start;
-             }
-         }
-         if (flg){
-             newArray.push(nembArray[i])
-         }
-     }
-     ```
+###向前循环比较
 
-   * 放到函数中用return语句结束循环
+```js
+for(let i=0;i<arr.length;i++){
+  for(let k=0;k<i;k++){
+    if(arr[i]===arr[k]){
+      arr.splice(i, 1);
+      i--;
+    }
+  }
+}
+console.log(arr)
+```
 
-     ```js
-     for (var i = 0; i < nembArray.length; i++) {
-             additem(nembArray[i])
-     }
-     function additem(item){
-         for (var k = -1; k < newArray.length; k++) {
-             if (newArray[k] === item) {
-                 return
-             }
-         }
-         newArray.push(item)
-     }
-     ```
+###向后循环比较
 
-2. 双重循环，创建新空数组，循环数组项跟后面的数组项进行对比，后面有一样的就不做处理，后面没有的就放到新数组里面。（回转寿司，跟传送带上的对比）
+```js
+for(let i=0;i<arr.length;i++){
+  for(let k=i+1;k<arr.length;k++){
+    if(arr[i]===arr[k]){
+      arr.splice(i, 1);
+      i--;
+    }
+  }
+}
+console.log(arr)
+```
 
-   ```js
-   var nembArray = [1, 5, 2, 12, 3, 2, 3, 3, 4, 32, 41, 2, 1, 12, 31, 23, 23, 12, 3, 23]
-   var newArray = []
-   for (var i = 0; i < nembArray.length; i++) {
-       var flg =true;
-       start :
-       for (var k = i+1; k < nembArray.length; k++) {
-           if(nembArray[k] === nembArray[i]){
-               flg=false
-               break start;
-           }
-       }
-       if (flg){
-           newArray.push(nembArray[i])
-       }
-   }
-   // 简写方式
-   for (var i = 0; i < nembArray.length; i++) {
-       var flg =true;
-       for (var k = i+1; k < nembArray.length; k++) {
-           if(nembArray[k] === nembArray[i]){
-               flg=false
-               k=++i
-           }
-       }
-       if (flg){
-           newArray.push(nembArray[i])
-       }
-   }
-   ```
+### 不修改原数组
 
-3. 同上，但是重复的删除，剩下的就是不重复的。注意k值要减1
+```js
+let rs=[];
+for(let i=0;i<arr.length;i++){
+  for(let k=i+1;k<arr.length;k++){
+    if(arr[i]===arr[k]){
+      //跳过
+      k=++i;
+    }
+  }
+  rs.push(arr[i]);
+}
+console.log(rs);
+```
 
-4. 使用对象属性名不能重复的特性去重
+###跟结果集比较
 
-5. 排序后再去重，删除相邻两个重复的
+```js
+let rs=[];
+for(let i=0;i<arr.length;i++){
+  if(rs.indexOf(arr[i])===-1){
+    rs.push(arr[i]);
+  }
+}
+console.log(rs);
+```
 
-6. ES5实现
+###使用filter方法
 
-   1. indexOf()  传入要对比的项，查找是否再数组中存在。
-   2. indexOf()  传入要对比的项和开始对比的位置，可以查找后面是否存在。
-   3. forEach()  代替for循环
+```js
+console.log(
+    arr.filter((item,index)=>{
+      return arr.indexOf(item)===index;
+    })
+)
+```
 
-7. ES6实现
+###使用对象
 
-   1. set对象  把set对象转化为数组用from对象 
-   2. 拓展运算符... 
+```js
+let tag={};
+let rs=[];
+for(let i=0;i<arr.length;i++){
+  if(!tag[arr[i]]){
+    rs.push(arr[i]);
+    tag[arr[i]]=true;
+  }
+}
+console.log(rs)
+```
+
+### ES6方法
+
+```js
+let rs=Array.from(new Set(arr))
+console.log(rs)
+```
+
+### 最精简方法
+
+```js
+console.log([...new Set(arr)])
+```
+
