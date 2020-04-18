@@ -1,4 +1,4 @@
-## 数据类型
+# 数据类型
 
 计算机的本质是计算，计算的本质是对值进行操作，值就是数据。数据类型就是对值进行分类。常规分类：数字，文本，真假
 
@@ -38,7 +38,7 @@ Object 本质上是由一组无序的名值对组成的。除了基础数据类�
 
   动态性是指js在定义变量时，只是给变量赋值这么简单，并没有确定变量的数据类型。只有在参与计算时才会动态的去取它所对应的数据类型。
 
-### typeof操作符
+## typeof操作符
 
 typeof操作符用来检测给定变量的数据类型，typeof返回的都是字符串。typeof不是函数
 
@@ -49,7 +49,7 @@ alert(typeof a==b) //返回true 相当于"boolean"==b
 alert(typeof (a==b)) //返回 "boolean"
 ```
 
-### 基本数据类型
+## 基本数据类型
 
 - Underfined
 
@@ -207,7 +207,8 @@ alert(typeof (a==b)) //返回 "boolean"
     >
     > 没有toString()方法，null 返回“null”，undefined返回“undefined”
 
-  ### 总结：
+  
+  #### 总结：
 
   1. 都有一个跟自己相同的名字的方法 **Boolean()** **Number()** **String()**
 
@@ -225,7 +226,7 @@ alert(typeof (a==b)) //返回 "boolean"
 
   5. 输出的结果都是两类
 
-### 复杂数据类型
+## 复杂数据类型
 
 ​       对象其实就是属性的无序集合. 特点
 
@@ -308,7 +309,7 @@ alert(typeof (a==b)) //返回 "boolean"
 
 ![js对象属性查询解释器执行流程](./img/jsObjectFindAttributeFlow.png)
 
-### 数据类型转换
+## 数据类型转换
 
 * 原始类型到字符串转换
 
@@ -414,7 +415,7 @@ alert(typeof (a==b)) //返回 "boolean"
     //"0.19sx7el6ichj"
     ```
 
-### 变量
+## 变量
 
 定义变量是否使用var区别：
 

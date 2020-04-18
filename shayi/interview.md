@@ -1,4 +1,4 @@
-##数据类型：
+## 数据类型：
 
 基础数据类型5种：布尔 number string null undefined
 
@@ -6,15 +6,15 @@
 
 ES6新增 Symbol表示独一无二的值 初始化不需要使用new操作符
 
-## 数据类型判断：
+### 数据类型判断：
 
 普通数据类型使用：typeof   null和object返回的都是object
 
 > typeof是一元操作符不是函数
 
-### 对象进行判断
+#### 对象进行判断
 
-###数组的判断
+#### 数组的判断
 
 ```js
 var a=[]
@@ -24,13 +24,13 @@ a.constructor === Array //true
 Object.prototype.toString.call(a) === "[object Array]"
 ```
 
-##数组
+### 数组
 
-###数组的方法
+#### 数组的方法
 
 **push() pop() shift() unshift()  reverse() sort()** concat() slice() **splice()** indexOf() lastIndexOf() every() filter()  forEach()  map() some() reduce()  reduceRight() 
 
-###数组去重
+#### 数组去重
 
 1. 空数组循环push的方式，一个一个的把原数组push进去。push前indexof判断一下新的值在数组种有没有，没有就push 有就下一个
 
@@ -46,26 +46,26 @@ Object.prototype.toString.call(a) === "[object Array]"
    [...] new set(arr)
    ```
 
-### 伪数组有哪些？
+#### 伪数组有哪些？
 
 1. DOM选择器选择的节点列表
 2. 函数中的 argument对象
 3. jq选择器选择的jq对象
 
-### 伪数组如何转换为数组
+#### 伪数组如何转换为数组
 
 1. 新建一个数组把伪数组的每一项循环放入到新数组中。
 2. Array.prototype.slice.call(伪数组) 或者 [].slice.call(伪数组)
 
-## 字符串
+### 字符串
 
-### 字符串的方法
+#### 字符串的方法
 
 charAt()  concat() charCodeAt()  indexOf() lastIndexOf() split() slice()  substring() substr() toLowerCase()  toUpperCase() trim() 
 
 slice()  substring() substr() 的区别
 
-## 数字
+### 数字
 
 如何判断一个东西是否是NaN？
 
@@ -73,7 +73,7 @@ isNaN() 不是用来判断是否是NaN，而是用来判断你传进去的参数
 
 NaN不全等于自身。ES6的is() 方法。
 
-## 布尔类型
+### 布尔类型
 
 js中哪些类型转化为布尔类型为false？
 
@@ -99,7 +99,6 @@ undefined 0 -0 null "" NaN
 1. new操作符本身就会创建一个对象然后把他返回一个对象。也就是说new操作符创建出来的一定是一个对象。
 
    如果你在构造函数里面显示的写了一个返回值，即return **。这时会发生什么情况：
-
    * 返回的值不
 
 

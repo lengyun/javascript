@@ -1,9 +1,7 @@
-## 单体内置对象
+# 单体内置对象
 
 **内置对象 **是由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。
-
 ECMA制定标准的三个原则：
-
 1. 把所有和浏览器有关的代码全部删掉
 2. 对象和平台无关
 3. 全面支持uncode编码
@@ -22,7 +20,7 @@ Object、 Array、Number、Boolean和 String 都是内置对象，严格上来�
 
   在不同环境下Global对象表示的东西也不一样，比如浏览器下为window对象。准确的说是浏览器下Global对象是window对象的一部分。
 
-  ### Global对象方法
+  ## Global对象方法
 
   * 处理数字方法
 
@@ -67,7 +65,7 @@ Object、 Array、Number、Boolean和 String 都是内置对象，严格上来�
     4. eval对性能有影响。使用了eval相当于在js的解释器中有增加了一个解释器。平常所说的解释器在编译过程中有两种模式，快速模式和安全模式。一般情况下都会使用快速模式，但是在解释的扫描过程当中，如果遇到了eval函数，这时解释器在eval运行之前，是不知道它会进行什么样的操作的。解释器没办法对eval进行判断，所以在这种情况下，解释器就会进入到安全模式下进行编译。
     5. 存在安全隐患，eval会把所有的字符串当成真实的代码来运行。尤其是当执行用户输入的数据的时候问题会比较严重。会造成代码攻击
 
-  ### Global对象属性
+  ## Global对象属性
 
   大部分属性都是构造函数，Object、 Array、Number、Function、Boolean、String、Date、RegExp、Error
 

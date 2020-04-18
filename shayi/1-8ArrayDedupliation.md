@@ -1,13 +1,13 @@
-## 数组去重复
+# 数组去重复
 
-### 创建数组
+## 创建数组
 
 ```js
 let arr = Array.from({ length: 20 }, () => Math.random() * 10 | 0)
 console.log(arr)
 ```
 
-###向前循环比较
+## 向前循环比较
 
 ```js
 for(let i=0;i<arr.length;i++){
@@ -21,7 +21,7 @@ for(let i=0;i<arr.length;i++){
 console.log(arr)
 ```
 
-###向后循环比较
+## 向后循环比较
 
 ```js
 for(let i=0;i<arr.length;i++){
@@ -35,7 +35,7 @@ for(let i=0;i<arr.length;i++){
 console.log(arr)
 ```
 
-### 不修改原数组
+## 不修改原数组
 
 ```js
 let rs=[];
@@ -51,7 +51,7 @@ for(let i=0;i<arr.length;i++){
 console.log(rs);
 ```
 
-###跟结果集比较
+## 跟结果集比较
 
 ```js
 let rs=[];
@@ -63,7 +63,7 @@ for(let i=0;i<arr.length;i++){
 console.log(rs);
 ```
 
-###使用filter方法
+## 使用filter方法
 
 ```js
 console.log(
@@ -73,7 +73,7 @@ console.log(
 )
 ```
 
-###使用对象
+## 使用对象
 
 ```js
 let tag={};
@@ -87,14 +87,14 @@ for(let i=0;i<arr.length;i++){
 console.log(rs)
 ```
 
-### ES6方法
+## ES6方法
 
 ```js
 let rs=Array.from(new Set(arr))
 console.log(rs)
 ```
 
-### 最精简方法
+## 最精简方法
 
 ```js
 console.log([...new Set(arr)])

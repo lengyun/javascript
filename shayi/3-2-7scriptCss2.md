@@ -1,8 +1,8 @@
-##CSSStyleSheet对象
+## CSSStyleSheet对象
 
 当我们去编写HTML的时候，通过link标签引入一个css文件或者通过style标签来创建一个内部的样式文件的时候，浏览器都会对应的创建一个CSSStyleSheet对象。CSSStyleSheet对象允许开发者对它进行增删改查的操作，我们也可以通过js来操作这个对象从而达到修改页面样式的目的。
 
-### 获取CSSStyleSheet对象
+## 获取CSSStyleSheet对象
 
 1.  在页面的document对象上有一个叫做styleSheet的属性，这个styleSheet属性就包含了你在页面上创建的所有style标签或者引入的所有的css文件。它是由这两个东西组成的合集StyleSheetList。这个合集StyleSheetList是一个伪数组，我们可以通过索引的方式访问它内部的对象，在这个合集当中每一个对象就对应了你引入的css文件或者你创建的style标签。
 
@@ -18,7 +18,7 @@
    //CSSStyleSheet
    ```
 
-### CSSStyleSheet对象的属性
+## CSSStyleSheet对象的属性
 
 `document.styleSheets[0]`
 
@@ -52,7 +52,7 @@
 
 * title，type：引入的DOM节点它上面title值和type值
 
-####CSSStyleRule对象的属性
+## CSSStyleRule对象的属性
 
 CSSStyleSheet对象上的cssRules属性，也是一个伪数组，伪数组里面的每一项都是css的一条规则，这个规则会以一个CSSStyleRule对象的形式存在。
 
@@ -87,9 +87,9 @@ CSSStyleSheet对象上的cssRules属性，也是一个伪数组，伪数组里�
   * media规则
   * 字体规则
 
-##CSSStyleDeclaration对象
+## CSSStyleDeclaration对象
 
-###css的操作
+### css的操作
 
 在我们通过js来控制页面显示过程的时候所有的操作都是通过操作CSSStyleDeclaration对象来实现的。
 
@@ -277,7 +277,7 @@ document.styleSheets[0].cssRules[0].style //得到 CSSStyleDeclaration 伪数组
 
 所有的js都是通过操作CSSStyleDeclaration对象实现的。脚本化css最终操作的都是CSSStyleDeclaration对象。
 
-### css对象
+## css对象
 
  css对象是浏览器原生提供的。它提供了两个操作方法：
 

@@ -1,14 +1,14 @@
-## H5class和焦点管理
+# H5class和焦点管理
 
-##class管理
+## class管理
 
-##H5获取class类节点
+### H5获取class类节点
 
 **document.getElementsByClassName()**
 
 可以通过一个class名称来获取一个HTMLCollection的class列表。不兼容IE9以下
 
-###兼容性方式：
+### 兼容性方式：
 
 ```js
 function findClass(name){
@@ -23,14 +23,14 @@ function findClass(name){
 }
 ```
 
-###存在问题：
+### 存在问题：
 
 1. js本身的执行速度是比较快的，但js对DOM节点的操作是相对要慢一些的比较耗时。这种兼容方式会造成性能下降
 2. getElementsByClassName()获取到的是HTMLCollection动态合集，兼容性方式是自己建立的一个数组，不是动态合集。
 
 > 通过ID获取节点性能比通过class获取节点快很多，原因就是通过class获取节点需要把所有的节点遍历一遍。
 
-##H5DOM节点的classList属性
+### H5DOM节点的classList属性
 
 可以获取当前节点下的所有class名称组成的数组，这个数组是个DOMTokenList对象，它也是一个伪数组。js为这个对象提供了四个方法：
 
@@ -41,12 +41,12 @@ function findClass(name){
 
 四个方法接收的参数都是一个，都是字符串。
 
-###注意：
+### 注意：
 
 1. H5 方法兼容性问题
 2. 都只能接受一个字符串，而且字符串是不能有空格的。
 
-###扩展：
+### 扩展：
 
 * 如果相对DOM节点增加多个class应该如何操作？
 
@@ -56,9 +56,9 @@ function findClass(name){
 
   答案：浏览器只会渲染一次！因为对于浏览器来讲他的渲染引擎和js的解释器引擎是同步工作的，也就是说在同一时间内只有一个东西在工作，要么是渲染引擎要么是js解释器引擎。
 
-## 焦点管理
+##  焦点管理
 
-###如何知道那个元素获取了焦点？
+### 如何知道那个元素获取了焦点？
 
 H5的document.activeElement 属性保存了文档当中被激活的那个节点。这个激活的节点在不同的时间保存的值是不一样的。
 
@@ -66,7 +66,7 @@ H5的document.activeElement 属性保存了文档当中被激活的那个节点�
 
 可以用document.activeElement来判浏览器是否加载完成，不等于null就表示加载完成。onload事件
 
-### 如何让文档中的元素获取焦点？
+###  如何让文档中的元素获取焦点？
 
 1. 文档的默认加载。
 
@@ -80,7 +80,7 @@ H5的document.activeElement 属性保存了文档当中被激活的那个节点�
 
    js中使用focus()方法让DOM元素获取焦点。
 
-###如何判断整个文档获得了焦点？
+### 如何判断整个文档获得了焦点？
 
  document.hasFocus()方法 用于判断整个文档是否获取焦点。 实际用途是判断一个用户是否正在跟网页进行交互。
 
