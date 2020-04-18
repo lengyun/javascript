@@ -1,9 +1,9 @@
 ## ECMAScript
 
-1. [简介和使用](./shayi/1-1-introduce.md)
-2. [基本概念](./shayi/1-2-BasicConcept.md)
-3. [数据类型](./shayi/1-3-dataType.md)
-4. [表达式](./shayi/1-4-expression.md)
+1. [简介和使用](./shayi/1-1introduce.md)
+2. [基本概念](./shayi/1-2BasicConcept.md)
+3. [数据类型](./shayi/1-3dataType.md)
+4. [表达式](./shayi/1-4expression.md)
 5. 操作符
    1. [一元二元三元操作符](./shayi/1-5-1unaryOperator.md)
    2. [逻辑运算符](./shayi/1-5-2logicOperation.md)
@@ -38,8 +38,9 @@
    4. [class和焦点管理](./shayi/3-2-4classAndfocus.md)
    5. [使用字符串操作DOM节点](./shayi/3-2-5stringMendDOM.md)
    6. [JS的滚动操作](./shayi/3-2-6scroll.md)
-   7. [脚本化CSS](./shayi/3-2-7scriptCss.md)
-   8. [内链样式和外链样式操作](./shayi/3-2-8scriptCss.md)
+   7. 脚本化css
+      1. [内链样式操作/计算样式/脚本化css类](./shayi/3-2-7scriptCss1.md)
+      2. [外链样式和嵌入样式操作](./shayi/3-2-7scriptCss2.md)
 
 ## 事件
 

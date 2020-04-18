@@ -1,10 +1,10 @@
-DOM对象
+# DOM对象
 
 DOM（文档对象模型）是用来表示HRML和XML的API（应用程序编程接口）。即平常使用的HTML对于js来讲需要使用一种数据结构来表示出来，我们把这种用js表示文档对象的模型，称之为DOM对象模型。
 
 DOM结构比喻成家谱，对于一个DOM结构来讲，他的上层只能有一个节点，我们把这种节点称之为**父节点**。父节点下面的所有节点都称之为**子节点**。和子节点相互平行在同一个层级的节点称之为**兄弟节点**。父节点、子节点、兄弟节点构成了DOM结构。js中有DOM构成的树形结构称之为DOM树。DOM树上的每一个节点都是一个node对象。
 
-### Node类型
+## Node类型
 
 js中所有的节点都是继承Node类型下的，因此这些节点都有一些公共属性和方法。
 
@@ -84,7 +84,7 @@ childNodes、parentNode、previousSibling、nextSibling、firstChild、lastChild
 
 实际开发中用到的3种节点：
 
-###Document节点
+## Document节点
 
 表示整个文档。它是window对象的一个属性，也是一个全局的变量。
 
@@ -108,7 +108,7 @@ childNodes、parentNode、previousSibling、nextSibling、firstChild、lastChild
 
   获取前一个页面的地址。使用场景：如果是从百度来的页面返回的时候可以知道上一个是不是百度，是的话跳到首页去。
 
-###Element节点（文档元素节点）
+## Element节点（文档元素节点）
 
 用来表示HTML或XML里面的每一个元素的，Element节点是Node类型的子类，继承了node节点的所有属性和方法。
 
@@ -123,7 +123,7 @@ Elemwnt节点另外四个常用的属性：
 * dir 当前节点的一个语言方向。值只有两个ltr rtl
 * className  元素指定的 CSS 类 class是js中的关键字，不能使用class作为属性的名称，如果访问节点中的class时，使用className这个属性。返回的是一个字符串
 
-#### 节点的查找
+### 节点的查找
 
 从全局角度获取element节点：
 
@@ -157,13 +157,13 @@ Elemwnt节点另外四个常用的属性：
 document.body.getElementsByTagName("div")
 ```
 
-#### 节点的创建
+### 节点的创建
 
 * document.createElement()
 
   接收一个字符串作为参数。一般情况会传一个标签名，除此之外还可以传一个HTML片断进去。返回创建的Node对象。然后使用appendChild()方法把它插入到某个位置。
 
-#### 节点的特性
+### 节点的特性
 
 html是多元化的东西，有很多html标签它上面有一些特有的属性我们把他叫做节点特性。比如img标签的src属性是一个字符串。有的是事件处理程序如onclick。
 
@@ -181,7 +181,7 @@ document.getElementsByTagName('img')[0].src=""
 3. 在js中如果你去获取一个节点属性的时候，大部分情况下得到的是字符串类型，有些特殊的情况可以得到布尔类型（defaultCheck）和数字类型（maxlengs）。如果是事件处理程序得到的是函数类型。style属性得到的是一个样式对象。
 4. 这些特有的属性只能用于获取和修改不能用于删除，也不能使用delet操作符删除
 
-#### 非标准特性
+### 非标准特性
 
 用于操作用户自定义特性
 
@@ -195,7 +195,7 @@ document.getElementsByTagName('img')[0].src=""
 1. 使用这些方法设置和读取的这些属性都是字符串形式。可以设置和读取非标准特性也可以设置和读取标准特性。
 2. 对于这些标准特性在js中是关键字的属性，都正常使用不需要额外html的转换。
 
-#### 数据集属性
+### 数据集属性
 
 非标准特殊设置自定义属性会造成html不合法。H5 增加了一个新的属性可以让用户自定义的去设置一些属性或读取一些属性。H5新增加的属性叫数据集属性。
 
@@ -233,7 +233,7 @@ document.getElementsByTagName('img')[0].src=""
 2. 多个自定义属性方便维护
 3. 浏览器支持dataset就说明是支持H5的浏览器，H5浏览器同时也支持css3。css3中增加了一个属性选择器的东西，通过属性选择器和dataset这两个东西结合就可以实现各种不同效果。
 
-####枚举element节点上的所有属性
+### 枚举element节点上的所有属性
 
 node.attributes属性，返回的是一个伪数组，里面包含了元素节点的所有属性。这个伪数组也可以使用索引来调用对应的每一个属性的对象。除此之外你也可以使用属性的名字直接获取该名称对应的属性的值。
 
@@ -245,7 +245,7 @@ attr[0] //id= "app"
 attr.id //id= "app"
 ```
 
-###text节点 （文本节点）
+## text节点 （文本节点）
 
 文本节点包含的是纯文本或者转义后的HTML字符，不能包含HTML代码。
 
@@ -264,7 +264,7 @@ attr.id //id= "app"
 * splitText(offset)：从 offset 指定的位置将当前文本节点分成两个文本节点。
 * substringData(offset, count)：提取从 offset 指定的位置开始到 offset+count 为止处的字符串
 
-####创建文本节点
+### 创建文本节点
 
  document.createTextNode() 
 
@@ -272,19 +272,19 @@ attr.id //id= "app"
 
 引出问题，两个相邻的文本节点。
 
-####规范化文本节点
+### 规范化文本节点
 
 normalize()
 
 在一个包含两个或多个文本节点的父元素上调用 normalize()方法，则会将所有文本节点合并成一个节点，
 
-### 伪数组总结：
+## 伪数组总结：
 
 1. 函数中的参数对象argement
 2. 获得的节点列表
 3.  node.attributes 节点属性
 
-###浏览器重绘
+## 浏览器重绘
 
 没当我们把创建的节点放到文档中去使用appendChild()或者insertBefore()的时候，会引起浏览器重绘。
 
@@ -292,7 +292,7 @@ normalize()
 
 此时引出了文档片段类型
 
-####DocumentFragment类型
+### DocumentFragment类型
 
 **document.createDocumentFragment()** 方法创建文档片段。
 

@@ -1,6 +1,6 @@
 # 简介和使用
 
-##JavaScript实现
+## JavaScript实现
 
 JavaScript实现包括如下三个部分
 
@@ -9,7 +9,7 @@ JavaScript实现包括如下三个部分
 | ECMAScript |        DOM        |      BOM       |
 |  提供核心语言功能  | 提供访问和操作网页内容的方法和接口 | 提供与浏览器交互的方法和接口 |
 
-##`<script>`标签元素属性
+## script标签元素属性
 
 > 在计算机中同步代表事情是按顺序执行，异步代表事情是同时进行的。
 >
@@ -46,18 +46,18 @@ JavaScript实现包括如下三个部分
 
 ## js运行的原理
 
-> 包含在<script>元素内部的 JavaScript 代码将被从上至下依次**解释**。
+> 包含在`<script>`元素内部的 JavaScript 代码将被从上至下依次**解释**。
 
 * js的解释分两个过程：
   1. 预处理
   2. 执行
 * js是一种阻断式的语言
 
-> 在解释器对<script>元素内部的所有代码求值完毕以前（预处理和执行），页面中的其余内容都不会被浏览器加载或显示。
+> 在解释器对`<script>`元素内部的所有代码求值完毕以前（预处理和执行），页面中的其余内容都不会被浏览器加载或显示。
 
 **js有一个预处理过程，预处理完了再执行。整个预处理加执行是一个阻断式的操作。预处理加执行放在一起才是js从上至下的解释。**
 
-##外部文件使用
+## 外部文件使用
 
 1. src对应的外部文件不一定是js。如果不是js文件，需要对type类型做下定义
 
@@ -75,11 +75,11 @@ JavaScript实现包括如下三个部分
 
 5. async 和 defer能不用就不用。
 
-##内部文件使用 *
+## 内部文件使用 *
 
 可扩展超文本标记语言，即 XHTML（Extensible HyperText Markup Language），是将 HTML 作为
 XML 的应用而重新定义的一个标准。编写 XHTML 代码的规则要比编写 HTML 严格得多，而且直接影
-响能否在嵌入 JavaScript 代码时使用<script/>标签。小于号（<）在 XHTML 中将被当作开始一个新标签来解析.
+响能否在嵌入 JavaScript 代码时使用`<script/>`标签。小于号（<）在 XHTML 中将被当作开始一个新标签来解析.
 
 保证让相同代码在 XHTML 中正常运行:
 
@@ -92,11 +92,11 @@ XML 的应用而重新定义的一个标准。编写 XHTML 代码的规则要比
 //<![CDATA[
 function compare(a, b) {
     if (a < b) {
-    	alert("A is less than B");
+      alert("A is less than B");
     } else if (a > b) {
-    	alert("A is greater than B");
+      alert("A is greater than B");
     } else {
-    	alert("A is equal to B");
+      alert("A is equal to B");
     }
 }
 //]]>
